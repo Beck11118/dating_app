@@ -12,7 +12,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')  # replace 'home' with your home page URL
+            return redirect('base:index')  # replace 'home' with your home page URL
     else:
         form = SignUpForm()
     return render(request, 'account/register.html', {'form': form})
@@ -23,7 +23,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('home')  # replace 'home' with your home page URL
+            return redirect('base:index')  # replace 'home' with your home page URL
     else:
         form = LoginForm()
     return render(request, 'account/login.html', {'form': form})
