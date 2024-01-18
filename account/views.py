@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm, LoginForm
+from django.contrib.auth.views import LogoutView
 
 def register(request):
     if request.method == 'POST':
@@ -18,6 +19,9 @@ def register(request):
     return render(request, 'account/register.html', {'form': form})
 
 def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('base:index')
+    
     if request.method == 'POST':
         form = LoginForm(request, request.POST)
         if form.is_valid():
@@ -27,4 +31,9 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'account/login.html', {'form': form})
+
+
+class CustomLogoutView(LogoutView):
+    def get_next_page(self):
+        return redirect('base:index') 
 

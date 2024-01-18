@@ -1,0 +1,20 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}{{ user_profile.user.username }}'s Profile{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">{{ user_profile.user.username }}</h5>
+          <p class="card-text">{{ user_profile.bio }}</p>
+          <p class="card-text"><strong>Interests:</strong> {{ user_profile.interests }}</p>
+          <!-- Add more profile information as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!-- matches/match_list.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Matches{% endblock %}
+
+{% block content %}
+  <h2 class="mt-4">Your Matches</h2>
+  <div class="row">
+    {% for match in matches %}
+      <div class="col-md-4">
+        <div class="card mt-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ match.user2.user.username }}</h5>
+            <p class="card-text">Matched at: {{ match.matched_at }}</p>
+            <!-- Add more match information as needed -->
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+<!-- messages/message_form.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Compose Message{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class="mt-4">Compose Message to {{ receiver_profile.user.username }}</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
